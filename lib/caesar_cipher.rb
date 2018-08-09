@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'sinatra/reloader'
+#require 'sinatra/reloader'
 
 def cipher(str, shift)
     str_array = str.split(//)
