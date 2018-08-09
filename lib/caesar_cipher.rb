@@ -1,3 +1,6 @@
+require 'sinatra'
+require 'sinatra/reloader'
+
 def cipher(str, shift)
     str_array = str.split(//)
     new_str = []
@@ -14,4 +17,12 @@ def cipher(str, shift)
     end
 
     new_str.join
+end
+
+get '/' do
+    original = params['message']
+    shift = params['shift'].to_i
+    
+    translated = cipher(original, shift) if original != nil
+    erb :index, :locals => {:translated => translated, :original => original}
 end
